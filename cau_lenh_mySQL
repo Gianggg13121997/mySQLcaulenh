@@ -1,0 +1,38 @@
+create database my_homework;
+use my_homework;
+create table product(
+id int primary key auto_increment,
+name varchar(40) not null,
+price double,
+isSell boolean
+);
+select*from product; # hiển thị bảng
+insert into product(name,price,isSell) values('banh',10,true); # thêm thông tin
+insert into product(name,price,isSell) values('keo',20,true);
+insert into product(name,price,isSell) values('thuoc la',30,true);
+insert into product(name,price,isSell) values('nuoc ngot',11,false);
+insert into product(name,price,isSell) values('durex',50,true);
+
+
+select*from product where price >=10; # sau where là điều kiện truy vấn
+select*from product where price >=100;
+select*from product where isSell = false;
+select*from product where price >15 & isSell = true;
+select*from product where price >=10 or id <= 3; #or hoặc
+select*from product where price >=10 and id <= 3;
+select*from product where price between 10 and 20; #between : nằm giữa khoảng
+select*from product where price is null; # lấy giá trị null
+select*from product where price is not null; # lấy giá trị không phải null
+select*from product where name like 'b%'; #tìm theo tên đầu
+select*from product where name like '%e%'; # tìm theo tên gần đúng
+
+select isSell, count(id) as 'count'
+from product
+group by isSell
+having count(id)<4;
+select price, count(price) as'count'
+from product where price >1 and price <1000 
+group by price
+having count(price) =1;
+
+
